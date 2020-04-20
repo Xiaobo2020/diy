@@ -4,7 +4,7 @@ import Compiler from "./compiler";
 class Vue {
   constructor (options) {
     this.$data = options.data || {};
-    this.$el = document.getElementById(options.el);
+    this.$el = document.querySelector(options.el);
 
     // 数据代理
     this._proxyData(this.$data);
