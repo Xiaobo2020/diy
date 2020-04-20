@@ -1,4 +1,5 @@
 import Observer from "./observer";
+import Compiler from "./compiler";
 
 class Vue {
   constructor (options) {
@@ -10,6 +11,9 @@ class Vue {
 
     // 数据劫持
     new Observer(this.$data);
+
+    // 模板编译
+    new Compiler(this);
   }
   _proxyData (data) {
     Object.keys(data).forEach(key => {
