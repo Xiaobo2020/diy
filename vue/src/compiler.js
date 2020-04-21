@@ -1,3 +1,5 @@
+import Watcher from "./watcher";
+
 class Compiler {
   constructor (context) {
     this.$el = context.$el;
@@ -54,7 +56,11 @@ class Compiler {
     const text = node.textContent.trim();
     if (text) {
       const expr = this.parseText(text);
-      console.log(expr);
+      
+      // 对节点进行添加监听回调
+      new Watcher(expr, this.data, (newValue) => {
+        node.textContent = newValue;
+      });
     }
   }
   parseText (text) {
