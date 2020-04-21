@@ -8,6 +8,9 @@ class Compiler {
 
       // 将文档片段中的模板dom进行编译
       this.compiler($fragment);
+
+      // 编译完成后重新挂载dom树中
+      this.$el.appendChild($fragment);
     }
   }
   nodeToFragment (node) {
