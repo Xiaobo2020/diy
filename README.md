@@ -14,3 +14,4 @@
 + [x] [vue](./vue/index.html)
 + [ ] commonjs
 + [ ] webpack
++ [x] [图片懒加载](./lazy_load/index.html)
