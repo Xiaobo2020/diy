@@ -13,7 +13,7 @@ window.onload = function () {
     for (let i = 0; i < num; i++) {
       if (
         imgs[i].getAttribute('data-src') && 
-        imgs[i].offsetTop + imgs[i].clientHeight > scrollHeight && 
+        imgs[i].offsetTop + imgs[i].offsetHeight > scrollHeight && 
         imgs[i].offsetTop <= viewHeight + scrollHeight
       ) {
         const src = imgs[i].getAttribute('data-src');
