@@ -1,3 +1,5 @@
+import Dep from "./dep";
+
 class Observer {
   constructor (data) {
     this.data = data;
@@ -15,16 +17,19 @@ class Observer {
   }
   // 数据劫持
   defineReactive (scope, key, value) {
+    const dep = new Dep();
     Object.defineProperty(scope, key, {
       enumerable: true,
       configurable: false,
       get () {
-        console.log('get', value);
+        Dep.target && dep.addSubs(Dep.target);
         return value;
       },
       set (newValue) {
-        console.log('set', newValue);
-        value = newValue;
+        if (value !== newValue) {
+          value = newValue;
+          dep.notify();
+        }
       }
     });
     // 深层对象数据劫持

@@ -1,3 +1,5 @@
+import Dep from "./dep";
+
 let uid = 0;
 class Watcher {
   constructor (expr, scope, cb) {
@@ -12,7 +14,9 @@ class Watcher {
     this.cb && this.cb(newValue);
   }
   get () {
+    Dep.target = this;
     const newValue = this.computeExpression(this.expr, this.scope);
+    Dep.target = null;
     return newValue;
   }
   computeExpression (expr, scope) {
